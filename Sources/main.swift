@@ -15,7 +15,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
         statusItem.button?.title = "⌨︎"
         let menu = NSMenu()
-        menu.addItem(NSMenuItem(title: "Печатать буфер (0,2 с/символ)", action: #selector(typeClipboard), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Type Clipboard (random delay)", action: #selector(typeClipboard), keyEquivalent: ""))
         menu.addItem(.separator())
         menu.addItem(NSMenuItem(title: "Разрешение Универсального доступа…", action: #selector(openAccessibilitySettings), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Выход", action: #selector(quit), keyEquivalent: "q"))
@@ -54,9 +54,18 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     private func type(_ text: String, into pid: pid_t) {
         guard pid > 0 else { return }
+        guard pid != ProcessInfo.processInfo.processIdentifier else { return }
         guard AXIsProcessTrusted() else {
-            let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true] as CFDictionary
-            _ = AXIsProcessTrustedWithOptions(options)
+            DispatchQueue.main.async {
+                let alert = NSAlert()
+                alert.messageText = "Universal Access Required"
+                alert.informativeText = "Please grant HumanPaste permission in System Settings → Privacy & Security → Accessibility, then restart the app."
+                alert.addButton(withTitle: "Open Settings")
+                alert.addButton(withTitle: "Cancel")
+                if alert.runModal() == .alertFirstButtonReturn {
+                    self.openAccessibilitySettings()
+                }
+            }
             return
         }
         DispatchQueue.global(qos: .userInitiated).async {
