@@ -12,17 +12,20 @@ A macOS application that inserts text from the clipboard as humanized typed inpu
 
 ## Installation
 
-Download the DMG image matching your Mac architecture:
+Download the DMG image matching your Mac architecture. Each DMG contains a `.pkg` installer that installs the app properly into `/Applications`.
 
 | Architecture | DMG file |
 |---|---|
 | Apple Silicon (arm64 / M1, M2, M3) | [HumanPaste-AppleSilicon.dmg](https://github.com/aynisej/HumanPaste/releases/download/v1.1/HumanPaste-AppleSilicon.dmg) |
 | Intel (x86_64) | [HumanPaste-Intel.dmg](https://github.com/aynisej/HumanPaste/releases/download/v1.1/HumanPaste-Intel.dmg) |
 
-1. Open the downloaded DMG file.
-2. Drag `HumanPaste.app` into your `Applications` folder.
-3. Launch `HumanPaste.app`. It appears in the menu bar.
-4. On first use, grant **Universal Access** permission in **System Settings → Privacy & Security → Accessibility** so the app can type into other applications.
+Installation steps:
+
+1. Open the downloaded `.dmg` file.
+2. Double-click the `.pkg` installer (`HumanPaste-AppleSilicon.pkg` or `HumanPaste-Intel.pkg`).
+3. Follow the installer wizard. The app will be installed into `/Applications/`.
+4. Launch `HumanPaste.app` from `/Applications/`. It appears in the menu bar.
+5. On first use, grant **Universal Access** permission in **System Settings → Privacy & Security → Accessibility** so the app can type into other applications.
 
 ## Building
 
