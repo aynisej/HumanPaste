@@ -16,8 +16,8 @@ Download the DMG image matching your Mac architecture. Each DMG contains a `.pkg
 
 | Architecture | DMG file |
 |---|---|
-| Apple Silicon (arm64 / M1, M2, M3) | [HumanPaste-AppleSilicon.dmg](https://github.com/aynisej/HumanPaste/releases/download/v1.1/HumanPaste-AppleSilicon.dmg) |
-| Intel (x86_64) | [HumanPaste-Intel.dmg](https://github.com/aynisej/HumanPaste/releases/download/v1.1/HumanPaste-Intel.dmg) |
+| Apple Silicon (arm64 / M1, M2, M3) | [HumanPaste-AppleSilicon.dmg](https://github.com/aynisej/HumanPaste/releases/download/v1.1.1/HumanPaste-AppleSilicon.dmg) |
+| Intel (x86_64) | [HumanPaste-Intel.dmg](https://github.com/aynisej/HumanPaste/releases/download/v1.1.1/HumanPaste-Intel.dmg) |
 
 Installation steps:
 
