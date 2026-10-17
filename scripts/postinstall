@@ -1,0 +1,12 @@
+#!/bin/bash
+# Postinstall: Verify accessibility permission
+APP_PATH="/Applications/HumanPaste.app"
+if [ -d "$APP_PATH" ]; then
+    # Try a simple accessibility check
+    if ! /usr/bin/osascript -e 'tell application "System Events" to tell application process "Finder" to set frontmost to true' 2>/dev/null; then
+        echo "NOTE: HumanPaste does not have Universal Access permission."
+        open "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"
+        exit 1
+    fi
+fi
+exit 0

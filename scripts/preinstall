@@ -1,0 +1,7 @@
+#!/bin/bash
+# Preinstall: Check accessibility permission before installing
+if ! osascript -e 'tell application "System Events" to keystroke ""' 2>/dev/null; then
+    echo "WARNING: HumanPaste requires Universal Access (Accessibility)."
+    echo "After installation, please go to System Settings → Privacy & Security → Accessibility and add HumanPaste."
+fi
+exit 0

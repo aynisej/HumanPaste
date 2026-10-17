@@ -45,6 +45,10 @@ The resulting DMG files appear in `dist/`:
 - `HumanPaste-AppleSilicon.dmg` (arm64)
 - `HumanPaste-Intel.dmg` (x86_64)
 
+## Notarization
+
+Full Apple notarization requires a paid Apple Developer ID ($99/year) and a Developer ID Application certificate. Without it, macOS Gatekeeper may warn on first open. The `.pkg` installer includes `preinstall`/`postinstall` scripts that check for Universal Access and guide the user; this satisfies the permission-checking requirement at install time.
+
 ## License
 
 [PolyForm Noncommercial License 1.0.0](LICENSE.md) — free use for any non-commercial purposes. Commercial use is prohibited; for a commercial license contact the author.
