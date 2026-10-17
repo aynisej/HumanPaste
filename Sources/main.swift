@@ -70,7 +70,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                 }
                 down.postToPid(pid)
                 up.postToPid(pid)
-                Thread.sleep(forTimeInterval: 0.2)
+                Thread.sleep(forTimeInterval: Double.random(in: 0.05...3.5))
             }
         }
     }

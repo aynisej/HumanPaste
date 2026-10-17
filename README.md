@@ -1,22 +1,35 @@
 # HumanPaste
 
-Минимальное приложение macOS для имитации набора текста из текущего буфера обмена: приложение сохраняет строку при запуске действия и посылает её целевому приложению Unicode-символами с интервалом 0,2 секунды.
+A macOS application that inserts text from the clipboard as humanized typed input: copies to an abstract place, then types the copied text character by character with a random interval between 0.05 and 3.5 seconds per character.
 
-## Сборка и запуск
+## Features
+
+- **Clipboard → humanized typing**: reads the current pasteboard content and types it out as if a user were typing
+- **Random typing delay**: each character is followed by a random pause drawn from Uniform(0.05, 3.5) seconds, making the input appear more natural
+- **Status bar menu**: includes a menu item "Type Clipboard (random delay)" to trigger the action manually
+- **System Services registration**: registers as a macOS Service named "HumanPaste" available in the "Services" menu of compatible applications
+- **Cross-architecture**: built separately for Apple Silicon (arm64) and Intel (x86_64) with corresponding DMG images
+
+## Building
 
 ```sh
+# Build and launch the app
 ./build.sh
 open HumanPaste.app
 ```
 
-Для создания отдельных DMG для Apple Silicon и Intel выполните `./package-dmg.sh`. Образы появятся в `dist/`.
+To create separate DMG images for Apple Silicon and Intel:
 
-Приложение работает из меню-барa. Штатный macOS Service **«Вставить гуманизированно»** регистрируется в приложениях, которые показывают сервисы в контекстном меню/подменю «Службы»; доступность зависит от конкретного приложения. После первой попытки ввода разрешите HumanPaste управлять компьютером в **Системные настройки → Конфиденциальность и безопасность → Универсальный доступ**. Если пункт «Службы» ещё не появился, выйдите и войдите в систему либо перезапустите целевое приложение.
+```sh
+./package-dmg.sh
+```
 
-Пункт в контекстном меню абсолютно каждого приложения macOS установить нельзя: такие меню принадлежат отдельным приложениям. Используется поддерживаемая macOS интеграция Services, а меню-бар служит запасным способом запуска.
+The resulting DMG files appear in `dist/`:
+- `HumanPaste-AppleSilicon.dmg` (arm64)
+- `HumanPaste-Intel.dmg` (x86_64)
 
-## Лицензия
+## License
 
-[PolyForm Noncommercial License 1.0.0](LICENSE.md) — свободное использование для любых некоммерческих целей. Коммерческое использование запрещено; для коммерческой лицензии свяжитесь с автором.
+[PolyForm Noncommercial License 1.0.0](LICENSE.md) — free use for any non-commercial purposes. Commercial use is prohibited; for a commercial license contact the author.
 
 Required Notice: Copyright 2026 aynisej (https://github.com/aynisej)
